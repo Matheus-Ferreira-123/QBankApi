@@ -1,33 +1,26 @@
+using Microsoft.EntityFrameworkCore;
 using QBankApi.Models;
+using QBankApi.Data;
+using QBankApi.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddControllers();
+
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
-
-app.MapGet("/accounts", () =>
+if (app.Environment.IsDevelopment())
 {
-    // Código para obter todas as contas
-});
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
-app.MapGet("/accounts/{id}", (int id) =>
-{
-    // Código para obter uma conta por ID
-});
-
-app.MapPost("/accounts", (Account account) =>
-{
-    // Código para criar uma nova conta
-});
-
-app.MapPut("/accounts/{id}", (int id, Account updatedAccount) =>
-{
-    // Código para atualizar uma conta existente
-});
-
-app.MapDelete("/accounts/{id}", (int id) =>
-{
-    // Código para deletar uma conta
-});
-
+app.UseHttpsRedirection();
+app.UseAuthorization();
+app.MapControllers();
 app.Run();
