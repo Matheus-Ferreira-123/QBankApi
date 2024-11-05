@@ -5,7 +5,7 @@ namespace QBankApi.Models
     {
         public int Id { get; set; }
         public int Saldo { get; set;}
-        public string Name { get; set; } = null;
-        public string email { get; set; } = null;
+        public string NomeCliente { get; set; } = null;
+        public string Cpf { get; set; } = null;
     }
 }
