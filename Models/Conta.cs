@@ -7,5 +7,5 @@ namespace QBankApi.Models
         public int Saldo { get; set;}
         public string NomeCliente { get; set; } = string.Empty;
         public string Cpf { get; set; } = string.Empty;
-    }
+    }   
 }
