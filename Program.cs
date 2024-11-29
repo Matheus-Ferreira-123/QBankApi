@@ -71,7 +71,7 @@ app.MapPost("/register", async (UserManager<IdentityUser> userManager,RegisterMo
 });
 
 
-app.MapPost("/login", async (UserManager<IdentityUser> userManager, LoginModel model) =>
+app.MapPost("/login", async (UserManager<IdentityUser> userManager, Login model) =>
 {
     var user = await userManager.FindByNameAsync(model.Username);
     if (user != null && await userManager.CheckPasswordAsync(user, model.Password))

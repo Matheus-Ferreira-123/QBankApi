@@ -9,7 +9,9 @@ public class AppDbContext : IdentityDbContext<IdentityUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-        public DbSet<Conta> Contas { get; set; }
+       public DbSet<Conta>? Contas { get; set; }
+
+       public DbSet<Login>? Logins {get; set; } 
         
     }
 }

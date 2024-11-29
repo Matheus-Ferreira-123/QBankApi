@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace QBankApi.Controllers
 {
-    [Route("api/Conta")]
+    [Route("[controller]")]
     [ApiController]
     public class ContaController : ControllerBase
     {
